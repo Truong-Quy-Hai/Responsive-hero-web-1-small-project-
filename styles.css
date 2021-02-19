@@ -1,0 +1,370 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap');
+
+* {
+  padding    : 0;
+  margin     : 0;
+  box-sizing : border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.container {
+  width : 1280px;
+  margin: auto;
+}
+
+header {
+  display        : flex;
+  justify-content: space-between;
+  align-items    : center;
+  height         : 100px;
+}
+
+#logo {
+  font-weight        : 700;
+  font-size          : 36px;
+  letter-spacing     : 3px;
+  width              : 30%;
+  opacity            : 0;
+  animation          : toRightOpa 0.5s;
+  animation-delay    : 0.5s;
+  animation-fill-mode: forwards;
+}
+
+#main-nav {
+  display    : flex;
+  align-items: center;
+  width      : 70%;
+}
+
+#main-nav ul {
+  display    : flex;
+  margin-left: auto;
+  align-items: center;
+}
+
+#main-nav ul li {
+  list-style-type: none;
+  padding        : 0.6rem 1rem;
+  margin-right   : 1.2rem;
+  transform      : translateX(0px);
+  opacity        : 1;
+  transition     : transform 0.2s, opacity 0.1s;
+}
+
+#main-nav ul li:nth-of-type(1) {
+  transition-delay: 0, 0;
+}
+
+#main-nav ul li:nth-of-type(2) {
+  transition-delay: 0.1s, 0.1s;
+}
+
+#main-nav ul li:nth-of-type(3) {
+  transition-delay: 0.2s, 0.2s;
+}
+
+#main-nav ul li:nth-of-type(4) {
+  transition-delay: 0.3s, 0.3s;
+}
+
+#main-nav ul li:last-of-type {
+  margin-right    : 2rem;
+  transition-delay: 0.4s, 0.4s;
+}
+
+#main-nav ul li a {
+  text-transform : uppercase;
+  text-decoration: none;
+  color          : #000;
+  font-weight    : 600;
+}
+
+#main-nav.hide ul {
+  visibility: hidden;
+  opacity   : 0;
+}
+
+#main-nav.hide ul li {
+  transition: all 0s;
+  transform : translateX(40px);
+  opacity   : 0;
+}
+
+#main-nav .trigger {
+  cursor         : pointer;
+  user-select    : none;
+  opacity        : 0;
+  animation      : toLeftOpa 0.5s forwards;
+  animation-delay: 0.6s;
+}
+
+/***********************************/
+#heros {
+  position       : relative;
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+  margin-bottom  : 1.5rem;
+}
+
+#heros .flex {
+  width  : 1280px;
+  margin : auto;
+  height : 600px;
+  display: flex;
+}
+
+#heros .flex .box {
+  width    : calc(25% - 30px / 4);
+  overflow : hidden;
+  opacity  : 0;
+  animation: toRightOpa 0.5s forwards;
+}
+
+#heros .flex .box:nth-of-type(1) {
+  animation-delay: 0.7s;
+}
+
+#heros .flex .box:nth-of-type(2) {
+  animation-delay: 1s;
+}
+
+#heros .flex .box:nth-of-type(3) {
+  animation-delay: 1.3s;
+}
+
+#heros .flex .box:nth-of-type(4) {
+  animation-delay: 1.6s;
+}
+
+#heros .flex .box:hover img {
+  transform: scale(1.2);
+}
+
+#heros .flex .box:not(:last-child) {
+  margin-right: 10px;
+}
+
+#heros img {
+  object-fit: cover;
+  transition: all 0.5s;
+  animation : toFit 0.5s;
+  width     : 100%;
+  height    : 100%;
+}
+
+#heros img.toFit {
+  animation: none;
+}
+
+@keyframes toFit {
+  0% {
+    transform: scale(0.7);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes toRightOpa {
+  0% {
+    opacity  : 0;
+    transform: translateX(-100px);
+  }
+
+  30% {
+    opacity: 0.15;
+  }
+
+  50% {
+    opacity: 0.35;
+  }
+
+  70% {
+    opacity: 0.6;
+  }
+
+  100% {
+    opacity  : 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes toLeftOpa {
+  0% {
+    opacity  : 0;
+    transform: translateX(100px);
+  }
+
+  30% {
+    opacity: 0.15;
+  }
+
+  50% {
+    opacity: 0.35;
+  }
+
+  70% {
+    opacity: 0.6;
+  }
+
+  100% {
+    opacity  : 1;
+    transform: translateX(0);
+  }
+}
+
+#heros .overlay {
+  position  : fixed;
+  top       : 5%;
+  width     : 100%;
+  height    : calc(100% + 100px);
+  visibility: hidden;
+  opacity   : 0;
+}
+
+#heros .overlay.active {
+  width     : 1280px;
+  height    : 600px;
+  visibility: visible;
+  margin    : auto;
+  opacity   : 1;
+  transition: width 0.5s, height 0.5s;
+}
+
+#heros .overlay.active img {
+  position: relative;
+  z-index : 10000;
+}
+
+#heros .overlay.active::after {
+  position  : fixed;
+  top       : 0;
+  left      : 0;
+  width     : 100%;
+  height    : 100%;
+  content   : '';
+  background: rgba(0, 0, 0, 0.3);
+  z-index   : 1001;
+}
+
+/***********************************/
+
+footer {
+  display        : flex;
+  justify-content: space-between;
+  align-items    : center;
+}
+
+footer ul {
+  display: flex;
+}
+
+footer ul li {
+  list-style-type: none;
+  margin-right   : 2rem;
+  animation      : toRightOpa 0.5s forwards;
+  opacity        : 0;
+}
+
+footer ul li:nth-of-type(1) {
+  animation-delay: 2s;
+}
+
+footer ul li:nth-of-type(2) {
+  animation-delay: 2.1s;
+}
+
+footer ul li:nth-of-type(3) {
+  animation-delay: 2.2s;
+}
+
+footer p {
+  animation      : toLeftOpa 0.5s forwards;
+  opacity        : 0;
+  animation-delay: 2.5s;
+}
+
+footer ul li a {
+  text-decoration: none;
+  color          : #000;
+}
+
+@media screen and (max-width: 1280px) {
+
+  .container,
+  #heros .flex,
+  #heros .overlay.active {
+    width: 80%;
+  }
+
+  #heros .flex {
+    flex-wrap: wrap;
+  }
+
+  #heros .flex .box {
+    width     : calc(50% - 10px);
+    margin-top: 1rem;
+  }
+
+  #heros .flex .box:not(:nth-of-type(2n)) {
+    margin-right: 10px;
+  }
+
+}
+
+@media screen and (max-width: 1092px) {
+
+  .container,
+  #heros .flex,
+  #heros .overlay.active {
+    width: 90%;
+  }
+}
+
+/** vertical menu */
+@media screen and (max-width: 967px) {
+  #main-nav {
+    width  : auto;
+    z-index: 1000;
+  }
+
+  #heros .flex {
+    height: auto;
+  }
+
+  #main-nav ul {
+    flex-direction : column;
+    position       : fixed;
+    top            : 0;
+    left           : 0;
+    width          : 100%;
+    height         : 100%;
+    justify-content: center;
+    background     : rgb(188, 143, 143);
+  }
+
+  #main-nav ul li {
+    margin: 0 !important;
+  }
+
+  #main-nav ul li a {
+    font-size: 2rem;
+  }
+
+  #main-nav.hide ul li {
+    transform: translateX(100px);
+  }
+}
+
+@media screen and (max-width: 867px) {
+  #heros {
+    align-items: flex-start;
+  }
+
+  #heros .flex .box {
+    width : 100%;
+    margin: 1rem !important;
+  }
+}
